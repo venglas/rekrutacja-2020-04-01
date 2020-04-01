@@ -1,7 +1,14 @@
 <template>
-  <v-container>
-    <h1>elo</h1>
-    <!-- <Map /> -->
+  <v-container fluid tag="article">
+    <v-card height="60%">
+      <v-toolbar light>
+        <v-icon>mdi-window-minimize</v-icon>
+        <v-icon>mdi-window-maximize</v-icon>
+        <v-icon>mdi-close</v-icon>
+      </v-toolbar>
+
+      <Map />
+    </v-card>
   </v-container>
 </template>
 
@@ -16,4 +23,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.container {
+  position: relative;
+  margin: 0;
+  padding: 0;
+  width: 90vw;
+  height: 60vh;
+}
 </style>
