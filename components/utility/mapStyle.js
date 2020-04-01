@@ -31,7 +31,7 @@ const mapStyle = {
         "id": "background",
         "type": "background",
         "paint": {
-          "background-color": "hsl(38, 48%, 86%)"
+          "background-color": "hsl(264, 29%, 97%)"
         }
       },
       {
@@ -49,7 +49,7 @@ const mapStyle = {
           "national_park"
         ],
         "paint": {
-          "fill-color": "hsl(78, 51%, 73%)",
+          "fill-color": "hsl(272, 55%, 94%)",
           "fill-opacity": [
             "interpolate",
             [
@@ -201,7 +201,7 @@ const mapStyle = {
           "all"
         ],
         "paint": {
-          "fill-color": "hsl(0, 100%, 50%)"
+          "fill-color": "#eedafd"
         }
       },
       {
