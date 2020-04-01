@@ -1,7 +1,7 @@
 <template>
-  <!-- <v-container> -->
+  <v-container>
     <div class="map" id="map"></div>
-  <!-- </v-container> -->
+  </v-container>
 </template>
 
 <script>
@@ -23,13 +23,14 @@ export default {
 
 <style lang="scss" scoped>
 .map {
-    position: static;
-    width: 100%;
-    height: 100%;
+}
 
-    .mapboxgl-canvas {
-        width: 100% !important;
-        height: 100% !important;
-    }
+
+.mapboxgl-map {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
 }
 </style>
