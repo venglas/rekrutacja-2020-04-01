@@ -1,9 +1,7 @@
 <template>
-  <v-container>
-      <div class="map" id="map">
-
-      </div>
-  </v-container>
+  <!-- <v-container> -->
+    <div class="map" id="map"></div>
+  <!-- </v-container> -->
 </template>
 
 <script>
@@ -28,5 +26,10 @@ export default {
     position: static;
     width: 100%;
     height: 100%;
+
+    .mapboxgl-canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
 }
 </style>
