@@ -18,7 +18,8 @@ module.exports = {
       { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' }
     ],
     script: [
-      { src: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js' }
+      { src: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js' },
+      { src: 'https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js' }
     ]
   },
   /*
