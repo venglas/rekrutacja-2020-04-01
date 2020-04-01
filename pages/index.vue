@@ -1,6 +1,7 @@
 <template>
   <v-container>
-    <Map />
+    <h1>elo</h1>
+    <!-- <Map /> -->
   </v-container>
 </template>
 
@@ -13,3 +14,6 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+</style>

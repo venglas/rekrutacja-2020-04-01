@@ -12,20 +12,16 @@ export default {
   mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
-        container: 'map', // container id
-        style: mapStyle, // stylesheet location
-        center: [-74.5, 40], // starting position [lng, lat]
-        zoom: 9 // starting zoom
+        container: 'map',
+        style: mapStyle,
+        center: [-74.5, 40],
+        zoom: 9
     });
   }
 }
 </script>
 
 <style lang="scss" scoped>
-.map {
-}
-
-
 .mapboxgl-map {
     position: absolute;
     left: 0;

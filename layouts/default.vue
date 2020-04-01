@@ -37,3 +37,21 @@ export default {
   }
 }
 </script>
+
+<style lang="scss" scoped>
+.v-application {
+  z-index: 1;
+}
+.v-application::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: url("../assets/img/background-map.png");
+  background-size: cover;
+  opacity: .5;
+  height: 100vh;
+  width: 100vw;
+  z-index: -1;
+}
+</style>
