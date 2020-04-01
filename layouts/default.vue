@@ -41,6 +41,17 @@ export default {
 <style lang="scss" scoped>
 .v-application {
   z-index: 1;
+  background: none;
+}
+.v-application::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #b86fa7c5;
+  height: 100vh;
+  width: 100vw;
+  z-index: 0;
 }
 .v-application::after {
   content: "";
