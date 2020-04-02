@@ -2,7 +2,6 @@
   <v-container fluid tag="article">
     <v-card height="60%">
       <v-toolbar light id="map-toolbar">
-        
         <v-col sm="1" class="logo">
           <img src="../assets/img/logo.png">
         </v-col>
@@ -22,17 +21,21 @@
         </v-row>
       </v-toolbar>
 
+      <Map-searcher />
       <Map />
+
     </v-card>
   </v-container>
 </template>
 
 <script>
+import MapSearcher from "@/components/MapSearcher";
 import Map from "@/components/map/Map";
 
 export default {
   components: {
-    Map
+    Map,
+    'Map-searcher': MapSearcher
   },
   data(){
     return {
