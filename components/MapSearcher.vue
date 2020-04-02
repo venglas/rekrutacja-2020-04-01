@@ -8,6 +8,35 @@
             label=""
             ></v-text-field>
         </v-toolbar>
+
+        <v-row class="px-4">
+            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
+                <v-select
+                :items="filters.price"
+                label="Price"
+                solo
+                light
+                ></v-select>
+            </v-col>
+
+            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
+                <v-select
+                :items="filters.room_bath"
+                label="Room/Bath"
+                solo
+                light
+                ></v-select>
+            </v-col>
+
+            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
+                <v-select
+                :items="filters.policies"
+                label="Policies"
+                solo
+                light
+                ></v-select>
+            </v-col>
+        </v-row>
     </section>
 </template>
  
@@ -16,7 +45,12 @@
     name: 'Map-searcher',
     data() {
         return {
-            rules: []
+            rules: [],
+            filters: {
+                price: ["ascending", "descending"],
+                room_bath: ["1 room", "2 rooms", "3 rooms", "4 rooms", "1 bath", "2 baths", "3 baths"],
+                policies: ["smokers", "pets"]
+            }
         }
     },
     props: {},
@@ -37,8 +71,12 @@
     left: 5%;
     margin-top: 1%;
     width: 33%;
+    background-color: #fff;
 }
 .toolbar {
-    border-radius: 5px;
+    border-radius: 5px 5px 0 0;
+}
+.v-text-field.v-text-field--solo .v-input__control {
+    min-height: 35px;
 }
 </style>
