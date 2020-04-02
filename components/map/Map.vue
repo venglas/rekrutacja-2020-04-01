@@ -25,10 +25,15 @@ export default {
 
     geojson().features.forEach(function(marker) {
       var el = document.createElement('div');
-      el.className = 'marker';
-      el.style.backgroundImage = 'url(https://placekitten.com/g/' + marker.properties.iconSize.join('/') + '/)';
-      el.style.width = marker.properties.iconSize[0] + 'px';
-      el.style.height = marker.properties.iconSize[1] + 'px';
+      el.className = "marker";
+
+      el.innerHTML = `
+        <div class="popover">
+          <p class="popover__message"></p>
+        </div>
+      `;
+      
+      el.children[0].children[0].innerHTML = marker.properties.message
       
       el.addEventListener('click', function() {
         window.alert(marker.properties.message);
@@ -43,7 +48,32 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
+<style lang="scss">
+.marker {
+  .popover {
+    opacity: 1;
+    transform: translate(0, 10px);
+    background-color: #5d4baf;
+    padding: 0 10px;
+    border-radius: 4px;
+    font-weight: bold;
+    width: fit-content;
+
+     &:before {
+      position: absolute;
+      z-index: -1;
+      content: "";
+      right: calc(50% - 10px);
+      bottom: -8px;
+      border-style: solid;
+      border-width: 0 10px 10px 10px;
+      border-color: transparent transparent #5d4baf transparent;
+      transition-duration: 0.3s;
+      transition-property: transform;
+      transform: rotate(180deg)
+    }
+  }
+}
 .mapboxgl-map {
   position: absolute;
   left: 0;
