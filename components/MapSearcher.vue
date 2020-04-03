@@ -1,10 +1,23 @@
 <template>
-    <section class="map-searcher">
+    <section class="map-searcher" v-if="$store.state.map.mapSearcher.visible">
         <v-toolbar color="#5d4baf" class="toolbar">
-            <v-icon class="mr-2">mdi-home-search</v-icon>
-            <v-text-field
-            v-model="searchingText"
-            ></v-text-field>
+            <v-row>
+                <v-col col="12" sm="1" align-self="center">
+                    <v-icon class="mr-2">mdi-home-search</v-icon>
+                </v-col>
+                
+                <v-col col="12" sm="10">
+                    <v-text-field
+                    autofocus
+                    v-model="searchingText"
+                    ></v-text-field>
+                </v-col>
+                
+                <v-col col="12" sm="1">
+                    <v-icon size="medium" class="close">mdi-close-thick</v-icon>
+                </v-col>
+            </v-row>
+            
         </v-toolbar>
 
         <v-row class="px-4">
@@ -276,6 +289,20 @@
 }
 .toolbar {
     border-radius: 5px 5px 0 0;
+    .close {
+        position: absolute;
+        right: 3px;
+        top: 3px;
+        padding: 5px;
+        border-radius: 3px;
+        opacity: .85;
+
+        &:hover {
+            background-color: rgba(0, 0, 0, .3);
+            opacity: 1;
+
+        }
+    }
 }
 .v-label {
     font-size: .75rem;

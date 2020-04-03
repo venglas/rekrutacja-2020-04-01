@@ -1,4 +1,7 @@
 export const state = () => ({
+    mapSearcher: {
+        visible: false
+    },
     places: [
         {
             name: "medford",
@@ -89,3 +92,9 @@ export const state = () => ({
         }
     ]
 });
+
+export const mutations = {
+    showMapSearcher(state) {
+        state.mapSearcher.visible = true;
+    }
+}

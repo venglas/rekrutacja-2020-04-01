@@ -12,7 +12,8 @@
               class="dropdown mt-2"
               label="Services"
               target="#map-toolbar"
-              :items="dropdown"
+              :items="service.services"
+              v-model="service.selectedService"
             ></v-overflow-btn>
           </v-col>
 
@@ -35,7 +36,20 @@ export default {
   },
   data(){
     return {
-      dropdown: ['service 1', 'service 2', 'service 3']
+      service: {
+        services: ['Search list', 'service 2', 'service 3'],
+        selectedService: null
+      }
+    }
+  },
+  watch: {
+    'service.selectedService'(){
+      this.showMapSearcher();
+    }
+  },
+  methods: {
+    showMapSearcher() {
+      this.$store.commit("map/showMapSearcher");
     }
   }
 }
