@@ -11,6 +11,7 @@
             <v-col class="d-flex filter-dropdown" cols="12" sm="3">
                 <v-select
                 :items="filters.price"
+                v-model="dropdownsSelectedOptions.price"
                 label="Price"
                 solo
                 light
@@ -40,7 +41,7 @@
             <div style="color: rgba(0, 0, 0, .5); font-size: 11px; margin: -1rem 0 0 1.5rem; z-index: 999; position: absolute">Showing {{properties.length}} properties</div>
             <v-col 
             class="py-0"
-            v-for="(property, i) in filteredProperties"
+            v-for="(property, i) in properties"
             :key="i"
             cols="12"
             >
@@ -85,11 +86,47 @@
                 room_bath: ["1 room", "2 rooms", "3 rooms", "4+ rooms", "1 bath", "2 baths", "3+ baths"],
                 policies: ["smokers", "pets"]
             },
+            dropdownsSelectedOptions: {
+                price: null,
+                room_bath: null,
+                policies: null
+            },
             properties: this.$store.state.map.places
         }
     },
     props: {},
-    computed: {
+    computed: {},
+    watch: {
+        searchingText(){
+            this.filteredProperties();
+        },
+        'dropdownsSelectedOptions.price'() {
+            let sorted;
+
+            switch(this.dropdownsSelectedOptions.price) {
+                case "descending": {
+                    sorted = this.properties.sort((a, b) => {
+                        return b.price - a.price;
+                    });
+                    break;
+                }
+                case "ascending": {
+                    sorted = this.properties.sort((a, b) => {
+                        return a.price - b.price;
+                    });
+                    break;
+                }
+            };
+
+            this.properties = sorted;
+        }
+    },
+    mounted() {this.filteredProperties()},
+    filters: {},
+    methods: {
+        resetProperties() {
+            this.properties = this.$store.state.map.places;
+        },
         filteredProperties() {
             this.resetProperties();
             
@@ -101,15 +138,7 @@
                 }
             });
             
-            return results;
-        }
-    },
-    watch: {},
-    mounted() {},
-    filters: {},
-    methods: {
-        resetProperties() {
-            this.properties = this.$store.state.map.places;
+            this.properties = results;
         }
     }
 }
