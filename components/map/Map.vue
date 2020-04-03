@@ -2,6 +2,7 @@
   <v-container>
     <div class="map" id="map"></div>
     <pre id="info" style="color: red; border: 1px solid red; z-index: 999; position: absolute;"></pre>
+    <Map-searcher />
   </v-container>
 </template>
 
@@ -10,8 +11,12 @@ import { mapStyle } from "@/components/utility/mapStyle.js";
 import { getCoordinates } from "@/components/utility/helpers.js";
 import { geojson } from "@/components/map/markersCoordinates.js";
 
+import MapSearcher from "@/components/MapSearcher";
+
 export default {
-  components: {},
+  components: {
+    'Map-searcher': MapSearcher
+  },
   async mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({

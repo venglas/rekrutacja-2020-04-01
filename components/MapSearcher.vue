@@ -37,6 +37,41 @@
                 ></v-select>
             </v-col>
         </v-row>
+
+        <div class="properties-list-wrapper">
+            <v-col 
+            class="py-0"
+            v-for="(property, i) in $store.state.map.places"
+            :key="i"
+            cols="12"
+            >
+                <v-card light flat>
+                    <div class="d-flex flex-no-wrap">
+                        <v-avatar
+                        class="ma-3"
+                        size="100"
+                        tile
+                        >
+                            <v-img :src="`/img/properties/property${property.img}.jpg`"></v-img>
+                        </v-avatar>
+
+                        <div>
+                            <v-card-title>
+                                <a style="color: #69a3a5; font-size: 1rem">{{property.name}}</a>
+                            </v-card-title>
+
+                            <v-card-subtitle style="color: #000">
+                                <p>address</p>
+                                <h2>{{property.price}}</h2>
+                            </v-card-subtitle>
+                        </div>
+                    </div>
+
+                    <v-divider />
+                </v-card>
+            </v-col>    
+        </div>
+        
     </section>
 </template>
  
@@ -71,7 +106,14 @@
     left: 5%;
     margin-top: 1%;
     width: 33%;
+    height: calc(60vh - 2rem);
+    overflow: hidden;
     background-color: #fff;
+
+    .properties-list-wrapper {
+        height: inherit;
+        overflow: scroll;
+    }
 }
 .toolbar {
     border-radius: 5px 5px 0 0;

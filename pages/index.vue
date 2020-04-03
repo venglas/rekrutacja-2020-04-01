@@ -21,21 +21,17 @@
         </v-row>
       </v-toolbar>
 
-      <Map-searcher />
       <Map />
-
     </v-card>
   </v-container>
 </template>
 
 <script>
-import MapSearcher from "@/components/MapSearcher";
 import Map from "@/components/map/Map";
 
 export default {
   components: {
-    Map,
-    'Map-searcher': MapSearcher
+    Map
   },
   data(){
     return {
