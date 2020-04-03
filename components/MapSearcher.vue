@@ -3,9 +3,7 @@
         <v-toolbar color="#5d4baf" class="toolbar">
             <v-icon class="mr-2">mdi-home-search</v-icon>
             <v-text-field
-            v-model="rules"
-            @keyup="updateData();"
-            label=""
+            v-model="searchingText"
             ></v-text-field>
         </v-toolbar>
 
@@ -42,7 +40,7 @@
             <div style="color: rgba(0, 0, 0, .5); font-size: 11px; margin: -1rem 0 0 1.5rem; z-index: 999; position: absolute">Showing {{properties.length}} properties</div>
             <v-col 
             class="py-0"
-            v-for="(property, i) in properties"
+            v-for="(property, i) in filteredProperties"
             :key="i"
             cols="12"
             >
@@ -81,7 +79,7 @@
     name: 'Map-searcher',
     data() {
         return {
-            rules: [],
+            searchingText: "",
             filters: {
                 price: ["ascending", "descending"],
                 room_bath: ["1 room", "2 rooms", "3 rooms", "4+ rooms", "1 bath", "2 baths", "3+ baths"],
@@ -92,11 +90,24 @@
     },
     props: {},
     computed: {
+        filteredProperties() {
+            this.resetProperties();
+            
+            const results = this.properties.filter((property) => {
+                const propertyNameTrimmed = property.name.substring(0, this.searchingText.length);
+
+                if (propertyNameTrimmed === this.searchingText ) {
+                    return property;
+                }
+            });
+            
+            return results;
+        }
     },
     watch: {},
     mounted() {},
+    filters: {},
     methods: {
-        updateData(){},
         resetProperties() {
             this.properties = this.$store.state.map.places;
         }
