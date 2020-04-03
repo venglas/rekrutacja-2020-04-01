@@ -39,7 +39,7 @@
             </v-col>
 
             <v-col>
-                <v-btn color="success" fab x-small dark @click="resetProperties(), resetFilters()">
+                <v-btn color="success" fab x-small dark title="Reset filters" @click="resetFilters()">
                     <v-icon>mdi-reload</v-icon>
                 </v-btn>
             </v-col>
@@ -246,13 +246,13 @@
 
         resetFilters() {
             this.resetProperties();
-            // this.filteredProperties();
+
+            this.searchingText = "";
             this.dropdownsSelectedOptions = {
                 price: null,
                 room_bath: null,
                 policies: null
             };
-            // this.filteredProperties();
         }
     }
 }
