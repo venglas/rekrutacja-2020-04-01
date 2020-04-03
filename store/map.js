@@ -3,7 +3,8 @@ export const state = () => ({
         {
             name: "medford",
             coordinates: [-74.82203674316509, 39.90104022513472],
-            price: "$1200",
+            address: "13 Branch St, Medford, New Jersey 08055, United States",
+            price: "1200",
             rooms: 2,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 1
@@ -12,7 +13,8 @@ export const state = () => ({
         {
             name: "lindenwold",
             coordinates: [-75.00056457519611, 39.82408974673274],
-            price: "$850",
+            address: "141 Broadway, Clementon, New Jersey 08021, United States",
+            price: "850",
             rooms: 1,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 2
@@ -21,7 +23,8 @@ export const state = () => ({
         {
             name: "abington",
             coordinates: [-75.126907348634, 40.12087302391154],
-            price: "$1400",
+            address: "2141 Kent Rd, Abington, Pennsylvania 19001, United States",
+            price: "1400",
             rooms: 3,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 3
@@ -30,7 +33,8 @@ export const state = () => ({
         {
             name: "randor",
             coordinates: [-75.36448669433696, 40.04732367582426],
-            price: "$1900",
+            address: "412 Belrose Ln, Wayne, Pennsylvania 19087, United States",
+            price: "1900",
             rooms: 4,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 4
@@ -39,7 +43,8 @@ export const state = () => ({
         {
             name: "mantua",
             coordinates: [-75.18046569824344, 39.792441246597264],
-            price: "$925",
+            address: "170 Ash Ave, Mantua, New Jersey 08051, United States",
+            price: "925",
             rooms: 2,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 1
@@ -48,7 +53,8 @@ export const state = () => ({
         {
             name: "cinnaminson",
             coordinates: [-74.99433802752026, 39.99662350222391],
-            price: "$1000",
+            address: "928 Burlington Pike, Riverton, New Jersey 08077, United States",
+            price: "1000",
             rooms: 2,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 2
@@ -57,7 +63,8 @@ export const state = () => ({
         {
             name: "cherryHill",
             coordinates: [-75.0423292922568, 39.93543318502654],
-            price: "$560",
+            address: "692 Kenilworth Ave, Cherry Hill, New Jersey 08002, United States",
+            price: "560",
             rooms: 1,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 3
@@ -66,7 +73,8 @@ export const state = () => ({
         {
             name: "swarthmore",
             coordinates: [-75.36052739186454, 39.90308344919325],
-            price: "$4200",
+            address: "65 Oak Knoll Dr, Swarthmore, Pennsylvania 19081, United States",
+            price: "4200",
             rooms: 5,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 4

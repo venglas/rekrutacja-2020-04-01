@@ -39,9 +39,10 @@
         </v-row>
 
         <div class="properties-list-wrapper">
+            <div style="color: rgba(0, 0, 0, .5); font-size: 11px; margin: -1rem 0 0 1.5rem; z-index: 999; position: absolute">Showing {{properties.length}} properties</div>
             <v-col 
             class="py-0"
-            v-for="(property, i) in $store.state.map.places"
+            v-for="(property, i) in properties"
             :key="i"
             cols="12"
             >
@@ -61,8 +62,8 @@
                             </v-card-title>
 
                             <v-card-subtitle style="color: #000">
-                                <p>address</p>
-                                <h2>{{property.price}}</h2>
+                                <p style="color: #000; font-size: .6rem">{{property.address}}</p>
+                                <h2>${{property.price}}</h2>
                             </v-card-subtitle>
                         </div>
                     </div>
@@ -85,16 +86,20 @@
                 price: ["ascending", "descending"],
                 room_bath: ["1 room", "2 rooms", "3 rooms", "4+ rooms", "1 bath", "2 baths", "3+ baths"],
                 policies: ["smokers", "pets"]
-            }
+            },
+            properties: this.$store.state.map.places
         }
     },
     props: {},
-    computed: {},
+    computed: {
+    },
     watch: {},
     mounted() {},
-    created() {},
     methods: {
-        updateData(){}
+        updateData(){},
+        resetProperties() {
+            this.properties = this.$store.state.map.places;
+        }
     }
 }
 </script>
