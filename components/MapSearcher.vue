@@ -21,6 +21,7 @@
             <v-col class="d-flex filter-dropdown" cols="12" sm="3">
                 <v-select
                 :items="filters.room_bath"
+                v-model="dropdownsSelectedOptions.room_bath"
                 label="Room/Bath"
                 solo
                 light
@@ -30,11 +31,21 @@
             <v-col class="d-flex filter-dropdown" cols="12" sm="3">
                 <v-select
                 :items="filters.policies"
+                v-model="dropdownsSelectedOptions.policies"
                 label="Policies"
                 solo
                 light
                 ></v-select>
             </v-col>
+
+            <v-col>
+                <v-btn color="success" fab x-small dark @click="resetProperties(), resetFilters()">
+                    <v-icon>mdi-reload</v-icon>
+                </v-btn>
+            </v-col>
+
+            
+            
         </v-row>
 
         <div class="properties-list-wrapper">
@@ -101,9 +112,11 @@
             this.filteredProperties();
         },
         'dropdownsSelectedOptions.price'() {
+            this.filteredProperties();
             let sorted;
 
             switch(this.dropdownsSelectedOptions.price) {
+                case null: return;
                 case "descending": {
                     sorted = this.properties.sort((a, b) => {
                         return b.price - a.price;
@@ -119,6 +132,96 @@
             };
 
             this.properties = sorted;
+        },
+
+        'dropdownsSelectedOptions.room_bath'() {
+            const vm = this;
+            this.filteredProperties();
+            let filtered;
+
+            const filterRoomsBath = (which, count) => {
+                filtered = vm.properties.filter( property => {
+                    if (which === "rooms"){
+                        if (property.rooms === count) {
+                            return property;
+                        }
+                    } else if (which === "baths") {
+                        if (property.baths === count) {
+                            return property;
+                        }
+                    }
+                } )
+            }
+
+            switch(this.dropdownsSelectedOptions.room_bath) {
+                case null: return;
+                case "1 room": {
+                    filterRoomsBath("rooms", 1);
+                    break;
+                }
+                case "2 rooms": {
+                    filterRoomsBath("rooms", 2);
+                    break;
+                }
+                case "3 rooms": {
+                    filterRoomsBath("rooms", 3);
+                    break;
+                }
+                case "4+ rooms": {
+                    filtered = this.properties.filter( property => {
+                        if (property.rooms >= 4){
+                            return property;
+                        }
+                    });
+                    break;
+                }
+
+                case "1 bath": {
+                    filterRoomsBath("baths", 1);
+                    break;
+                }
+                case "2 baths": {
+                    filterRoomsBath("baths", 2);
+                    break;
+                }
+                case "3+ baths": {
+                    filtered = this.properties.filter( property => {
+                        if (property.baths >= 3){
+                            return property;
+                        }
+                    });
+                    break;
+                }
+            }
+
+            this.properties = filtered;
+        },
+
+        'dropdownsSelectedOptions.policies'() {
+            this.filteredProperties();
+            let filtered;
+
+            switch (this.dropdownsSelectedOptions.policies) {
+                case null: return;
+                case "smokers": {
+                    filtered = this.properties.filter( property => {
+                        if (property.policies.includes("smoking")){
+                            return property;
+                        }
+                    });
+                    break;
+                }
+                case "pets": {
+                    filtered = this.properties.filter( property => {
+                        if (property.policies.includes("pets")){
+                            return property;
+                        }
+                    });
+                    break;
+                }
+            }
+
+            this.properties = filtered;
         }
     },
     mounted() {this.filteredProperties()},
@@ -130,7 +233,7 @@
         filteredProperties() {
             this.resetProperties();
             
-            const results = this.properties.filter((property) => {
+            const results = this.properties.filter( property => {
                 const propertyNameTrimmed = property.name.substring(0, this.searchingText.length);
 
                 if (propertyNameTrimmed === this.searchingText ) {
@@ -139,6 +242,17 @@
             });
             
             this.properties = results;
+        },
+
+        resetFilters() {
+            this.resetProperties();
+            // this.filteredProperties();
+            this.dropdownsSelectedOptions = {
+                price: null,
+                room_bath: null,
+                policies: null
+            };
+            // this.filteredProperties();
         }
     }
 }

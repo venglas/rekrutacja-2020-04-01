@@ -6,7 +6,8 @@ export const state = () => ({
             address: "13 Branch St, Medford, New Jersey 08055, United States",
             price: "1200",
             rooms: 2,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 1,
+            policies: ["pets", "section 8 housing"],
             img: 1
         },
     
@@ -16,7 +17,8 @@ export const state = () => ({
             address: "141 Broadway, Clementon, New Jersey 08021, United States",
             price: "850",
             rooms: 1,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 1,
+            policies: ["pets"],
             img: 2
         },
     
@@ -26,7 +28,8 @@ export const state = () => ({
             address: "2141 Kent Rd, Abington, Pennsylvania 19001, United States",
             price: "1400",
             rooms: 3,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 1,
+            policies: ["pets", "section 8 housing"],
             img: 3
         },
     
@@ -36,7 +39,8 @@ export const state = () => ({
             address: "412 Belrose Ln, Wayne, Pennsylvania 19087, United States",
             price: "1900",
             rooms: 4,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 2,
+            policies: ["smoking", "section 8 housing"],
             img: 4
         },
     
@@ -46,7 +50,8 @@ export const state = () => ({
             address: "170 Ash Ave, Mantua, New Jersey 08051, United States",
             price: "925",
             rooms: 2,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 1,
+            policies: ["section 8 housing"],
             img: 1
         },
     
@@ -56,7 +61,8 @@ export const state = () => ({
             address: "928 Burlington Pike, Riverton, New Jersey 08077, United States",
             price: "1000",
             rooms: 2,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 2,
+            policies: ["pets", "section 8 housing"],
             img: 2
         }, 
     
@@ -66,7 +72,8 @@ export const state = () => ({
             address: "692 Kenilworth Ave, Cherry Hill, New Jersey 08002, United States",
             price: "560",
             rooms: 1,
-            policies: ["smoking", "pets", "section 8 housing"],
+            baths: 1,
+            policies: ["section 8 housing"],
             img: 3
         },
     
@@ -76,6 +83,7 @@ export const state = () => ({
             address: "65 Oak Knoll Dr, Swarthmore, Pennsylvania 19081, United States",
             price: "4200",
             rooms: 5,
+            baths: 3,
             policies: ["smoking", "pets", "section 8 housing"],
             img: 4
         }
