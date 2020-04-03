@@ -33,10 +33,10 @@ export default {
         </div>
       `;
       
-      el.children[0].children[0].innerHTML = marker.properties.message
+      el.children[0].children[0].innerHTML = marker.properties.price
       
       el.addEventListener('click', function() {
-        window.alert(marker.properties.message);
+        window.alert(marker.properties.price);
       });
       
       // add marker to map
