@@ -22,8 +22,8 @@ export default {
     var map = new mapboxgl.Map({
       container: 'map',
       style: mapStyle,
-      center: [-74.5, 40],
-      zoom: 9
+      center: [-75.50279281493687, 39.96458433283425],
+      zoom: 9.5
     });
     getCoordinates(map);
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
@@ -38,10 +38,12 @@ export default {
         </div>
       `;
       
-      el.children[0].children[0].innerHTML = marker.properties.price
+      el.children[0].children[0].innerHTML = marker.properties.price;
       
-      el.addEventListener('click', function() {
-        window.alert(marker.properties.price);
+      el.addEventListener('click', function(e) {
+        // window.alert(marker.properties.price);
+        // map.setView([e.latlng.lat, e.latlng.lng, 12]);
+        map.zoom = 9;
       });
       
       // add marker to map

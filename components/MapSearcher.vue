@@ -13,7 +13,7 @@
                     ></v-text-field>
                 </v-col>
                 
-                <v-col col="12" sm="1">
+                <v-col col="12" sm="1" @click="$store.commit('map/hideMapSearcher')">
                     <v-icon size="medium" class="close">mdi-close-thick</v-icon>
                 </v-col>
             </v-row>
