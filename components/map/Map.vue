@@ -2,7 +2,7 @@
   <v-container>
     <div class="map" id="map"></div>
     <pre id="info" style="color: red; border: 1px solid red; z-index: 999; position: absolute;"></pre>
-    <Map-searcher />
+    <Map-searcher :map="map"/>
   </v-container>
 </template>
 
@@ -17,6 +17,11 @@ export default {
   components: {
     'Map-searcher': MapSearcher
   },
+  data(){
+    return {
+      map: null
+    }
+  },
   async mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
@@ -25,6 +30,8 @@ export default {
       center: [-75.41279281493687, 39.99900483883425 -0.05],
       zoom: 9.8
     });
+    this.map = map;
+
     getCoordinates(map);
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
 

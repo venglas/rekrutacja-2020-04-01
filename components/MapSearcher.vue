@@ -67,7 +67,7 @@
             :key="i"
             cols="12"
             >
-                <v-card light flat>
+                <v-card light flat @click="goToProperty(property)">
                     <div class="d-flex flex-no-wrap">
                         <v-avatar
                         class="ma-3"
@@ -116,7 +116,9 @@
             properties: this.$store.state.map.places
         }
     },
-    props: {},
+    props: {
+        map: { type: Object }
+    },
     computed: {},
     watch: {
         searchingText(){
@@ -264,6 +266,15 @@
                 room_bath: null,
                 policies: null
             };
+        },
+
+        goToProperty(property){
+            this.map.flyTo({
+                center: [
+                    property.coordinates[0], property.coordinates[1]
+                ],
+                essential: true
+            });
         }
     }
 }
