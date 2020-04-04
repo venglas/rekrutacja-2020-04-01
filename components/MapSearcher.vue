@@ -57,8 +57,6 @@
                 </v-btn>
             </v-col>
 
-            
-            
         </v-row>
 
         <div class="properties-list-wrapper">
