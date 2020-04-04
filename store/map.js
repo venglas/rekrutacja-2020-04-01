@@ -1,4 +1,5 @@
 export const state = () => ({
+    resize: 0,
     mapSearcher: {
         visible: false,
         slectedProperty: false
@@ -542,6 +543,9 @@ export const mutations = {
     },
     setSelectedProperty(state, condition) {
         state.mapSearcher.slectedProperty = condition;
+    },
+    increaseResize(state) {
+        state.resize++;
     },
     changePrice(state, obj){
         let i = 0;

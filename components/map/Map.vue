@@ -1,5 +1,5 @@
 <template>
-  <v-container>
+  <v-container fluid class="map-container">
     <div class="map" id="map"></div>
     <pre id="info" style="color: red; border: 1px solid red; z-index: 999; position: absolute;"></pre>
     <Map-searcher :map="map"/>
@@ -24,8 +24,14 @@ export default {
     }
   },
   computed: {
+    mapResize(){
+      return this.$store.state.map.resize;
+    }
   },
   watch: {
+    mapResize(){
+      // this.map.resize();
+    }
   },
   mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
@@ -95,12 +101,23 @@ export default {
     }
   }
 }
+.map-container {
+  margin: 0 !important;
+  // height: 90%;
+  height: 100%;
+  overflow: visible !important;
+}
+
 .mapboxgl-map {
   position: absolute;
   left: 0;
   top: 0;
   bottom: 0;
   width: 100%;
+}
+
+.mapboxgl-canvas {
+  height: calc(65vh - 64px) !important;
 }
 
 .marker {

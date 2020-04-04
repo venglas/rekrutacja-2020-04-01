@@ -1,6 +1,6 @@
 <template>
   <v-container fluid tag="article">
-    <v-card height="60%">
+    <v-card style="height: inherit">
       <v-toolbar light id="map-toolbar">
         <v-col sm="1" class="logo">
           <img src="../assets/img/logo.png">
@@ -42,6 +42,11 @@ export default {
       }
     }
   },
+  mounted(){
+    const vm = this;
+    window.addEventListener("resize", () => this.$store.commit('map/increaseResize'));
+    
+  },
   watch: {
     'service.selectedService'(){
       this.showMapSearcher();
@@ -61,10 +66,11 @@ export default {
 }
 .container {
   position: relative;
-  margin: 0;
+  overflow: hidden;
+  margin: 2rem auto;
   padding: 0;
-  width: 90vw;
-  height: 60vh;
+  width: 95vw;
+  height: 65vh;
 }
 .dropdown {
   height: -webkit-fill-available;
