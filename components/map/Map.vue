@@ -22,8 +22,8 @@ export default {
     var map = new mapboxgl.Map({
       container: 'map',
       style: mapStyle,
-      center: [-75.50279281493687, 39.96458433283425],
-      zoom: 9.5
+      center: [-75.41279281493687, 39.99900483883425 -0.05],
+      zoom: 9.8
     });
     getCoordinates(map);
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
@@ -43,7 +43,7 @@ export default {
       el.addEventListener('click', function(e) {
         // window.alert(marker.properties.price);
         // map.setView([e.latlng.lat, e.latlng.lng, 12]);
-        map.zoom = 9;
+        // map.zoom = 9;
       });
       
       // add marker to map

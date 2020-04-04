@@ -18,6 +18,13 @@ const getCoordinates = (map) => {
         // '<br />' +
         // e.lngLat is the longitude, latitude geographical position of the event
         // JSON.stringify(e.lngLat.wrap());
+        map.flyTo({
+            center: [
+                -75.126907348634, 40.12087302391154
+            ],
+            essential: true
+        });
+
         coords(e);
     });
 };
