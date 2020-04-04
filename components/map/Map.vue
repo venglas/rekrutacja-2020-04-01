@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapState  } from 'vuex';
 import { mapStyle } from "@/components/utility/mapStyle.js";
 import { getCoordinates } from "@/components/utility/helpers.js";
 import { geojson } from "@/components/map/markersCoordinates.js";
@@ -22,7 +23,11 @@ export default {
       map: null
     }
   },
-  async mounted() {
+  computed: {
+  },
+  watch: {
+  },
+  mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
       container: 'map',
@@ -32,32 +37,36 @@ export default {
     });
     this.map = map;
 
-    getCoordinates(map);
+    getCoordinates(this.map);
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
+    this.drawMarkers(map);
+  },
+  methods: {
+    drawMarkers(map) {
+       geojson().features.forEach(function(marker) {
+        var el = document.createElement('div');
+        el.className = "marker";
 
-    geojson().features.forEach(function(marker) {
-      var el = document.createElement('div');
-      el.className = "marker";
-
-      el.innerHTML = `
-        <div class="popover">
-          <p class="popover__message"></p>
-        </div>
-      `;
-      
-      el.children[0].children[0].innerHTML = marker.properties.price;
-      
-      el.addEventListener('click', function(e) {
-        // window.alert(marker.properties.price);
-        // map.setView([e.latlng.lat, e.latlng.lng, 12]);
-        // map.zoom = 9;
+        el.innerHTML = `
+          <div class="popover">
+            <p class="popover__message"></p>
+          </div>
+        `;
+        
+        el.children[0].children[0].innerHTML = marker.properties.price;
+        
+        el.addEventListener('click', function(e) {
+          // window.alert(marker.properties.price);
+          // map.setView([e.latlng.lat, e.latlng.lng, 12]);
+          // map.zoom = 9;
+        });
+        
+        // add marker to map
+        new mapboxgl.Marker(el)
+        .setLngLat(marker.geometry.coordinates)
+        .addTo(map);
       });
-      
-      // add marker to map
-      new mapboxgl.Marker(el)
-      .setLngLat(marker.geometry.coordinates)
-      .addTo(map);
-    });
+    }
   }
 }
 </script>

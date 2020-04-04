@@ -67,30 +67,7 @@
             :key="i"
             cols="12"
             >
-                <v-card light flat @click="goToProperty(property)">
-                    <div class="d-flex flex-no-wrap">
-                        <v-avatar
-                        class="ma-3"
-                        size="100"
-                        tile
-                        >
-                            <v-img :src="`/img/properties/property${property.img}.jpg`"></v-img>
-                        </v-avatar>
-
-                        <div>
-                            <v-card-title>
-                                <a style="color: #69a3a5; font-size: 1rem">{{property.name}}</a>
-                            </v-card-title>
-
-                            <v-card-subtitle style="color: #000">
-                                <p style="color: #000; font-size: .6rem">{{property.address}}</p>
-                                <h2>${{property.price}}</h2>
-                            </v-card-subtitle>
-                        </div>
-                    </div>
-
-                    <v-divider />
-                </v-card>
+                <Map-searcher-card :map="map" :property="property" />
             </v-col>    
         </div>
         
@@ -98,8 +75,13 @@
 </template>
  
 <script>
+import MapSearcherCard from "@/components/MapSearcherCard";
+
     export default {
     name: 'Map-searcher',
+    components: {
+        'Map-searcher-card': MapSearcherCard
+    },
     data() {
         return {
             searchingText: "",
@@ -266,15 +248,6 @@
                 room_bath: null,
                 policies: null
             };
-        },
-
-        goToProperty(property){
-            this.map.flyTo({
-                center: [
-                    property.coordinates[0], property.coordinates[1]
-                ],
-                essential: true
-            });
         }
     }
 }

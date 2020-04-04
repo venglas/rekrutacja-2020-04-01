@@ -19,7 +19,8 @@ module.exports = {
     ],
     script: [
       { src: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js' },
-      { src: 'https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js' }
+      { src: 'https://unpkg.com/@mapbox/mapbox-sdk/umd/mapbox-sdk.min.js' },
+      { src: 'https://cdn.jsdelivr.net/npm/tween.js@16.3.4' }
     ]
   },
   /*

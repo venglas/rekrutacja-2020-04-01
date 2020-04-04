@@ -1,6 +1,7 @@
 export const state = () => ({
     mapSearcher: {
-        visible: false
+        visible: false,
+        slectedProperty: false
     },
     places: [
         {
@@ -29,7 +30,7 @@ export const state = () => ({
             name: "abington",
             coordinates: [-75.126907348634, 40.12087302391154],
             address: "2141 Kent Rd, Abington, Pennsylvania 19001, United States",
-            price: "1400",
+            price: "140",
             rooms: 3,
             baths: 1,
             policies: ["pets", "section 8 housing"],
@@ -538,5 +539,28 @@ export const mutations = {
     },
     hideMapSearcher(state) {
         state.mapSearcher.visible = false;
+    },
+    setSelectedProperty(state, condition) {
+        state.mapSearcher.slectedProperty = condition;
+    },
+    changePrice(state, obj){
+        let i = 0;
+        
+        for(const property of state.places) {
+            if(JSON.stringify(property.coordinates) === JSON.stringify(obj.coordinates) ) {
+                state.places[i].price = 675463565768798
+            }
+            i++;
+        }
     }
+};
+
+export const actions = {
+    async changeProertyPrice({ commit }, obj) {
+        commit('changePrice', obj);
+    },
+    async setSelectedProperty({ commit }, condition) {
+        commit('setSelectedProperty', condition);
+    }
+    
 }
