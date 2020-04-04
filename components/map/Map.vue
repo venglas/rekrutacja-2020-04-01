@@ -43,7 +43,7 @@ export default {
   },
   methods: {
     drawMarkers(map) {
-       geojson().features.forEach(function(marker) {
+      geojson().features.forEach(function(marker) {
         var el = document.createElement('div');
         el.className = "marker";
 
@@ -56,9 +56,7 @@ export default {
         el.children[0].children[0].innerHTML = marker.properties.price;
         
         el.addEventListener('click', function(e) {
-          // window.alert(marker.properties.price);
-          // map.setView([e.latlng.lat, e.latlng.lng, 12]);
-          // map.zoom = 9;
+          // here you can do somethink after click on marker
         });
         
         // add marker to map
