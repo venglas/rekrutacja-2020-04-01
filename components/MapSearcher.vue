@@ -28,7 +28,7 @@
 
         <transition name="fade">
             <v-row class="px-4 sorting-tool" v-show="$store.state.map.mapSearcher.searcherSortingVisibility">
-                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                <v-col class="d-flex filter-dropdown" cols="12" sm="9" md="4" lg="3">
                     <v-select
                     :items="filters.price"
                     v-model="dropdownsSelectedOptions.price"
@@ -38,7 +38,7 @@
                     ></v-select>
                 </v-col>
 
-                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                <v-col class="d-flex filter-dropdown" cols="12" sm="9" md="4" lg="3">
                     <v-select
                     :items="filters.room_bath"
                     v-model="dropdownsSelectedOptions.room_bath"
@@ -48,7 +48,7 @@
                     ></v-select>
                 </v-col>
 
-                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                <v-col class="d-flex filter-dropdown" cols="12" sm="9" md="4" lg="4">
                     <v-select
                     :items="filters.policies"
                     v-model="dropdownsSelectedOptions.policies"
@@ -289,27 +289,46 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     }
 }
 .sorting-tool {
+    .collapse-button {
+        display: none;
+    }
+    
     @media (max-width: 1080px) {
         display: flex;
         flex-direction: column;
         align-items: center;
         margin: .5rem 0 .7rem 0;
 
+        .collapse-button {
+            display: block;
+        }
+
         .filter-dropdown {
             padding: 0;
             margin: .3rem 0;
+            max-width: 90%;
             
             .v-select {
                 height: 32px;
             }
         }
 
-        .reload-button {
-            
-        }
+        .reload-button {}
         .reload-button-wrapper {
             display: flex;
             justify-content: center;
+
+            @media (max-width: 1260px) {
+                display: none;
+            }
+        }
+    }
+    .reload-button-wrapper {
+        display: flex;
+        justify-content: center;
+
+        @media (min-width: 1080px) and (max-width: 1260px) {
+            margin-top: -35px;
         }
     }
 }
@@ -345,7 +364,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
   transition: opacity .5s;
   animation: show 400ms;
 }
-.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+.fade-enter, .fade-leave-to {
   opacity: 0;
   animation: hide 500ms ease;
 }
