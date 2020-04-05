@@ -1,8 +1,9 @@
 <template>
-  <v-container fluid class="map-container">
-    <div class="map" id="map"></div>
+  <v-container fluid class="map-container my-0">
+    <div class="map" id="map">
+        <Map-searcher :map="map"/>
+      </div>
     <pre id="info" style="color: red; border: 1px solid red; z-index: 999; position: absolute;"></pre>
-    <Map-searcher :map="map"/>
   </v-container>
 </template>
 
@@ -30,10 +31,11 @@ export default {
   },
   watch: {
     mapResize(){
-      // this.map.resize();
+      this.map.resize();
     }
   },
   mounted() {
+    
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
       container: 'map',
@@ -62,7 +64,12 @@ export default {
         el.children[0].children[0].innerHTML = marker.properties.price;
         
         el.addEventListener('click', function(e) {
-          // here you can do somethink after click on marker
+          // document.getElementById('fit').addEventListener('click', function() {
+          //   map.fitBounds([
+          //     [32.958984, -5.353521],
+          //     [43.50585, 5.615985]
+          //   ]);
+          // });
         });
         
         // add marker to map
@@ -101,23 +108,13 @@ export default {
     }
   }
 }
-.map-container {
-  margin: 0 !important;
-  // height: 90%;
-  height: 100%;
-  overflow: visible !important;
-}
-
-.mapboxgl-map {
-  position: absolute;
-  left: 0;
-  top: 0;
-  bottom: 0;
-  width: 100%;
+#map {
+  height: 100vh;
+  width: 100vw;
 }
 
 .mapboxgl-canvas {
-  height: calc(65vh - 64px) !important;
+  left: 0;
 }
 
 .marker {

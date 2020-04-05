@@ -70,11 +70,10 @@ export default {
   margin: 2rem auto;
   padding: 0;
   width: 95vw;
-  height: 65vh;
+  height: 90vh;
 }
 .dropdown {
   height: -webkit-fill-available;
-  
 }
 </style>
 

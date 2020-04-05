@@ -260,7 +260,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     left: 5%;
     margin-top: 1%;
     width: 33%;
-    height: calc(60vh - 2rem);
+    height: calc(100% - 7rem);
     overflow: hidden;
     background-color: #fff;
 
