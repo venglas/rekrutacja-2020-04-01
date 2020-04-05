@@ -1,5 +1,5 @@
 <template>
- <v-card light flat @click="goToProperty(property), animateValue(propertyPrice, 800, 1000);">
+ <v-card light flat @click="goToProperty(property), animateValue(propertyPrice, 800, 400);">
     <div class="d-flex flex-no-wrap">
         <v-avatar class="ma-3" size="100" tile>
             <v-img :src="`/img/properties/property${property.img}.jpg`"></v-img>

@@ -63,14 +63,7 @@ export default {
         
         el.children[0].children[0].innerHTML = marker.properties.price;
         
-        el.addEventListener('click', function(e) {
-          // document.getElementById('fit').addEventListener('click', function() {
-          //   map.fitBounds([
-          //     [32.958984, -5.353521],
-          //     [43.50585, 5.615985]
-          //   ]);
-          // });
-        });
+        el.addEventListener('click', function(e) {});
         
         // add marker to map
         new mapboxgl.Marker(el)
