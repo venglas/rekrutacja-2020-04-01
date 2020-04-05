@@ -7,7 +7,7 @@
         </v-col>
 
         <v-row justify="end" align="center">
-          <v-col cols="2" align="center" class="fill-height py-0 col-dropdown">
+          <v-col sm="3" md="2" lg="2" align="center" class="fill-height py-0 col-dropdown">
             <v-select
               v-model="service.selectedService"
               :items="service.services"
@@ -17,8 +17,8 @@
             ></v-select>
           </v-col>
 
-          <v-col sm="1" class="fill-height text-center">About</v-col>
-          <v-col sm="1" class="fill-height text-center">Contact</v-col>
+          <v-col sm="3" md="2" lg="1" class="fill-height text-center">About</v-col>
+          <v-col sm="3" md="2" lg="1" class="fill-height text-center">Contact</v-col>
         </v-row>
       </v-toolbar>
 
@@ -80,11 +80,19 @@ export default {
   height: 90vh;
 }
 .col-dropdown {
-  max-width: 10.666667%
+  max-width: 10.666667%;
+  @media(max-width: 1440px) {
+   max-width: 12.666667%; 
+  }
+  @media(max-width: 1440px) {
+   max-width: 15.666667%; 
+  }
+  @media(max-width: 1024px) {
+   max-width: 100%; 
+  }
 }
 .dropdown {
   height: -webkit-fill-available;
-  width: 10rem;
 }
 </style>
 
