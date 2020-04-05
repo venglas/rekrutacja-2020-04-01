@@ -125,6 +125,10 @@ import MapSearcherCard from "@/components/MapSearcherCard";
                     break;
                 }
             };
+            
+            for (const i of sorted) {
+                console.log(i.price)
+            }
 
             this.properties = sorted;
         },

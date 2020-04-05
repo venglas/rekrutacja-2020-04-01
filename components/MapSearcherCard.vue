@@ -12,7 +12,7 @@
 
             <v-card-subtitle style="color: #000">
                 <p style="color: #000; font-size: .6rem">{{property.address}}</p>
-                <h2>${{price}}</h2>
+                <h2>${{propertyPrice}}</h2>
             </v-card-subtitle>
         </div>
     </div>
@@ -36,7 +36,8 @@
     computed: {
         propertyPrice(){
             return JSON.parse(this.property.price);
-        }
+        },
+
     },
     watch: {},
     created() {},
