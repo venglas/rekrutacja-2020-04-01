@@ -287,7 +287,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     }
 }
 .v-label {
-    font-size: .75rem;
+    // font-size: .75rem;
 }
 .v-text-field.v-text-field--solo .v-input__control {
     min-height: 35px;

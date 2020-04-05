@@ -7,14 +7,14 @@
         </v-col>
 
         <v-row justify="end" align="center">
-          <v-col sm="1" align="center" class="fill-height py-0">
-            <v-overflow-btn
-              class="dropdown mt-2"
-              label="Services"
-              target="#map-toolbar"
-              :items="service.services"
+          <v-col cols="2" align="center" class="fill-height py-0 col-dropdown">
+            <v-select
               v-model="service.selectedService"
-            ></v-overflow-btn>
+              :items="service.services"
+              menu-props="auto"
+              hide-details
+              label="Services"
+            ></v-select>
           </v-col>
 
           <v-col sm="1" class="fill-height text-center">About</v-col>
@@ -49,12 +49,19 @@ export default {
   },
   watch: {
     'service.selectedService'(){
-      this.showMapSearcher();
+      if(this.service.selectedService === "Search list") {
+        this.showMapSearcher();
+      } else {
+        this.hideMapSearcher();
+      }
     }
   },
   methods: {
     showMapSearcher() {
       this.$store.commit("map/showMapSearcher");
+    },
+    hideMapSearcher() {
+      this.$store.commit("map/hideMapSearcher");
     }
   }
 }
@@ -72,8 +79,12 @@ export default {
   width: 95vw;
   height: 90vh;
 }
+.col-dropdown {
+  max-width: 10.666667%
+}
 .dropdown {
   height: -webkit-fill-available;
+  width: 10rem;
 }
 </style>
 
