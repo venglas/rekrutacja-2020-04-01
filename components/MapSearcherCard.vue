@@ -37,7 +37,6 @@
         propertyPrice(){
             return JSON.parse(this.property.price);
         },
-
     },
     watch: {},
     created() {},
@@ -54,7 +53,6 @@
             const random = (Math.random() * maxIncrease).toFixed(0);
             const end = start + JSON.parse((random));
 
-            console.log(random)
             const vm = this;
             const range = end - start;
             let current = start;
@@ -72,6 +70,3 @@
     },
 }
 </script>
-
-<style lang='scss'>
-</style>

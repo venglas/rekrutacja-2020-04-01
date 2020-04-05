@@ -578,5 +578,6 @@ export const actions = {
 export const getters = {
     getMapSearcherVisiblility: state => state.mapSearcher.visible,
     searcherSortingVisibility: state => state.mapSearcher.searcherSortingVisibility,
-    getProperties: state => state.places
+    getProperties: state => state.places,
+    getResize: state => state.resize
 }

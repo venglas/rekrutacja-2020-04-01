@@ -26,7 +26,7 @@ export default {
   },
   computed: {
     mapResize(){
-      return this.$store.state.map.resize;
+      return this.$store.getters['map/getResize'];
     }
   },
   watch: {
@@ -45,8 +45,8 @@ export default {
     });
     this.map = map;
     getCoordinates(this.map);
-    
-    map.addControl(new mapboxgl.NavigationControl());
+
+    map.addControl(new mapboxgl.NavigationControl()); // map controls +/-
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     this.drawMarkers(map);
   },
