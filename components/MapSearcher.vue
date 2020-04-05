@@ -1,5 +1,5 @@
 <template>
-    <section class="map-searcher" v-if="$store.state.map.mapSearcher.visible">
+    <section class="map-searcher" v-if="$store.getters['map/getMapSearcherVisiblility']">
         <v-toolbar color="#5d4baf" class="toolbar">
             <v-row>
                 <v-col col="12" sm="1" align-self="center">
@@ -20,14 +20,14 @@
             
         </v-toolbar>
 
-        <v-col v-show="!$store.state.map.mapSearcher.searcherSortingVisibility" class="reload-button-wrapper">
+        <v-col v-show="!$store.getters['map/searcherSortingVisibility']" class="reload-button-wrapper">
             <v-btn color="gray" class="uncollapse-button" fab x-small dark title="Collapse filters" @click="$store.commit('map/showSearcherSorting')">
                 <v-icon>mdi-arrow-collapse-down</v-icon>
             </v-btn>
         </v-col>
 
         <transition name="fade">
-            <v-row class="px-4 sorting-tool" v-show="$store.state.map.mapSearcher.searcherSortingVisibility">
+            <v-row class="px-4 sorting-tool" v-show="$store.getters['map/searcherSortingVisibility']">
                 <v-col class="d-flex filter-dropdown" cols="12" sm="9" md="4" lg="3">
                     <v-select
                     :items="filters.price"
@@ -106,7 +106,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
                 room_bath: null,
                 policies: null
             },
-            properties: this.$store.state.map.places
+            properties: this.$store.getters['map/getProperties']
         }
     },
     props: {
@@ -234,7 +234,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     filters: {},
     methods: {
         resetProperties() {
-            this.properties = this.$store.state.map.places;
+            this.properties = this.$store.getters['map/getProperties'];
         },
         filteredProperties() {
             this.resetProperties();

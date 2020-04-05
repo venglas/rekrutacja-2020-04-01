@@ -572,6 +572,11 @@ export const actions = {
     },
     async setSelectedProperty({ commit }, condition) {
         commit('setSelectedProperty', condition);
-    }
-    
+    }   
+};
+
+export const getters = {
+    getMapSearcherVisiblility: state => state.mapSearcher.visible,
+    searcherSortingVisibility: state => state.mapSearcher.searcherSortingVisibility,
+    getProperties: state => state.places
 }
