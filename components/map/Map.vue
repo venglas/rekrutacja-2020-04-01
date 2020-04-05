@@ -44,8 +44,9 @@ export default {
       zoom: 9.8
     });
     this.map = map;
-
     getCoordinates(this.map);
+    
+    map.addControl(new mapboxgl.NavigationControl());
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     this.drawMarkers(map);
   },

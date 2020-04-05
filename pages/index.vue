@@ -23,8 +23,30 @@
       </v-toolbar>
 
       <Map />
-    </v-card>
+
+      
+    </v-card>  
+    <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
+
+      <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
+      <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
+      <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
+      <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
+      <v-row class="testt" style="background-color: red">
+        <h1>dasdasd</h1>
+      </v-row>
   </v-container>
+    
 </template>
 
 <script>
