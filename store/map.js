@@ -2,7 +2,8 @@ export const state = () => ({
     resize: 0,
     mapSearcher: {
         visible: false,
-        slectedProperty: false
+        slectedProperty: false,
+        searcherSortingVisibility: true
     },
     places: [
         {
@@ -546,6 +547,12 @@ export const mutations = {
     },
     increaseResize(state) {
         state.resize++;
+    },
+    showSearcherSorting(state){
+        state.mapSearcher.searcherSortingVisibility = true;
+    },
+    hideSearcherSorting(state){
+        state.mapSearcher.searcherSortingVisibility = false;
     },
     changePrice(state, obj){
         let i = 0;

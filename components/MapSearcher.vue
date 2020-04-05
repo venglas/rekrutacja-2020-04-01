@@ -20,44 +20,55 @@
             
         </v-toolbar>
 
-        <v-row class="px-4">
-            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
-                <v-select
-                :items="filters.price"
-                v-model="dropdownsSelectedOptions.price"
-                label="Price"
-                solo
-                light
-                ></v-select>
-            </v-col>
+        <v-col v-show="!$store.state.map.mapSearcher.searcherSortingVisibility" class="reload-button-wrapper">
+            <v-btn color="gray" class="uncollapse-button" fab x-small dark title="Collapse filters" @click="$store.commit('map/showSearcherSorting')">
+                <v-icon>mdi-arrow-collapse-down</v-icon>
+            </v-btn>
+        </v-col>
 
-            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
-                <v-select
-                :items="filters.room_bath"
-                v-model="dropdownsSelectedOptions.room_bath"
-                label="Room/Bath"
-                solo
-                light
-                ></v-select>
-            </v-col>
+        <transition name="fade">
+            <v-row class="px-4 sorting-tool" v-show="$store.state.map.mapSearcher.searcherSortingVisibility">
+                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                    <v-select
+                    :items="filters.price"
+                    v-model="dropdownsSelectedOptions.price"
+                    label="Price"
+                    solo
+                    light
+                    ></v-select>
+                </v-col>
 
-            <v-col class="d-flex filter-dropdown" cols="12" sm="3">
-                <v-select
-                :items="filters.policies"
-                v-model="dropdownsSelectedOptions.policies"
-                label="Policies"
-                solo
-                light
-                ></v-select>
-            </v-col>
+                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                    <v-select
+                    :items="filters.room_bath"
+                    v-model="dropdownsSelectedOptions.room_bath"
+                    label="Room/Bath"
+                    solo
+                    light
+                    ></v-select>
+                </v-col>
 
-            <v-col>
-                <v-btn color="success" fab x-small dark title="Reset filters" @click="resetFilters()">
-                    <v-icon>mdi-reload</v-icon>
-                </v-btn>
-            </v-col>
+                <v-col class="d-flex filter-dropdown" cols="12" sm="3" md="9" lg="4">
+                    <v-select
+                    :items="filters.policies"
+                    v-model="dropdownsSelectedOptions.policies"
+                    label="Policies"
+                    solo
+                    light
+                    ></v-select>
+                </v-col>
 
-        </v-row>
+                <v-col class="reload-button-wrapper">
+                    <v-btn color="success" class="reload-button" fab x-small dark title="Reset filters" @click="resetFilters()">
+                        <v-icon>mdi-reload</v-icon>
+                    </v-btn>
+
+                    <v-btn color="gray" class="collapse-button" fab x-small dark title="Collapse filters" @click="$store.commit('map/hideSearcherSorting')">
+                        <v-icon>mdi-arrow-collapse-up</v-icon>
+                    </v-btn>
+                </v-col>
+            </v-row>
+        </transition>
 
         <div class="properties-list-wrapper">
             <div style="color: rgba(0, 0, 0, .5); font-size: 11px; margin: -1rem 0 0 1.5rem; z-index: 999; position: absolute">Showing {{properties.length}} properties</div>
@@ -263,7 +274,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     z-index: 999;
     left: 5%;
     margin-top: 1%;
-    width: 33%;
+    width: 33vw;
     height: calc(100% - 7rem);
     overflow: hidden;
     background-color: #fff;
@@ -272,6 +283,39 @@ import MapSearcherCard from "@/components/MapSearcherCard";
         height: inherit;
         overflow: scroll;
     }
+
+    @media (max-width: 960px) {
+        display: none;
+    }
+}
+.sorting-tool {
+    @media (max-width: 1080px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        margin: .5rem 0 .7rem 0;
+
+        .filter-dropdown {
+            padding: 0;
+            margin: .3rem 0;
+            
+            .v-select {
+                height: 32px;
+            }
+        }
+
+        .reload-button {
+            
+        }
+        .reload-button-wrapper {
+            display: flex;
+            justify-content: center;
+        }
+    }
+}
+.reload-button-wrapper {
+    display: flex;
+    justify-content: center;
 }
 .toolbar {
     border-radius: 5px 5px 0 0;
@@ -295,5 +339,34 @@ import MapSearcherCard from "@/components/MapSearcherCard";
 }
 .v-text-field.v-text-field--solo .v-input__control {
     min-height: 35px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+  animation: show 400ms;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  animation: hide 500ms ease;
+}
+
+.delayed-enter-active{
+    animation-name: show;
+    animation-duration: 400ms;
+}
+
+.delayed-leave-active {
+    animation-name: hide;
+    animation-duration: 400ms;
+}
+
+@keyframes show {
+    0% {max-height: 0;}
+    100%{max-height: 200px;}
+}
+
+@keyframes hide {
+    0% {max-height: 200px; opacity: 0;}
+    100%{max-height: 0px;}
 }
 </style>
