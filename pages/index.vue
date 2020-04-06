@@ -44,8 +44,8 @@ export default {
   },
   mounted(){
     const vm = this;
-    window.addEventListener("resize", () => this.$store.commit('map/increaseResize'));
-    
+    this.$store.commit('map/increaseResize', window.outerWidth)
+    window.addEventListener("resize", (e) => this.$store.commit('map/increaseResize', e.target.outerWidth));
   },
   watch: {
     'service.selectedService'(){

@@ -545,8 +545,8 @@ export const mutations = {
     setSelectedProperty(state, condition) {
         state.mapSearcher.slectedProperty = condition;
     },
-    increaseResize(state) {
-        state.resize++;
+    increaseResize(state, width) {
+        state.resize = width;
     },
     showSearcherSorting(state){
         state.mapSearcher.searcherSortingVisibility = true;

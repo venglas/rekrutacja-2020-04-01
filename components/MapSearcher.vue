@@ -1,19 +1,19 @@
 <template>
-    <section class="map-searcher" v-if="$store.getters['map/getMapSearcherVisiblility']">
+    <section class="map-searcher" ref="mapSearcher" v-if="$store.getters['map/getMapSearcherVisiblility']">
         <v-toolbar color="#5d4baf" class="toolbar">
             <v-row>
                 <v-col col="12" sm="1" align-self="center">
                     <v-icon class="mr-2">mdi-home-search</v-icon>
                 </v-col>
                 
-                <v-col col="12" sm="10">
+                <v-col col="12" sm="10" @click="showResults()">
                     <v-text-field
                     autofocus
                     v-model="searchingText"
                     ></v-text-field>
                 </v-col>
                 
-                <v-col col="12" sm="1" @click="$store.commit('map/hideMapSearcher')">
+                <v-col v-if="$store.getters['map/getResize'] > 960" col="12" sm="1" @click="$store.commit('map/hideMapSearcher')">
                     <v-icon size="medium" class="close">mdi-close-thick</v-icon>
                 </v-col>
             </v-row>
@@ -78,7 +78,7 @@
             :key="i"
             cols="12"
             >
-                <Map-searcher-card :map="map" :property="property" />
+                <Map-searcher-card :map="map" :property="property" @click.native="hideResults()"/>
             </v-col>    
         </div>
         
@@ -233,6 +233,16 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     mounted() {this.filteredProperties()},
     filters: {},
     methods: {
+        hideResults(){
+            this.$refs.mapSearcher.style.height = "54px";
+        },
+        showResults(){
+            if (this.$store.getters['map/getResize'] < 960){
+                this.$refs.mapSearcher.style.height = "70%";
+            } else {
+                this.$refs.mapSearcher.style.height = "90%";
+            }
+        },
         resetProperties() {
             this.properties = this.$store.getters['map/getProperties'];
         },
@@ -274,6 +284,8 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     height: calc(100% - 7rem);
     overflow: hidden;
     background-color: #fff;
+    transition: height ease-in-out 500ms;
+
 
     .properties-list-wrapper {
         height: inherit;
@@ -281,7 +293,23 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     }
 
     @media (max-width: 960px) {
-        display: none;
+        // display: none;
+
+        width: 100%;
+        left: 0;
+        height: 70%;
+        bottom: 54px;
+
+        .sorting-tool {
+            flex-direction: row;
+
+            .filter-dropdown {
+                max-width: 50%;
+            }
+            .collapse-button {
+                display: none;
+            }
+        }   
     }
 }
 .sorting-tool {
