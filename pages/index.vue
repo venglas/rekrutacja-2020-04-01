@@ -18,7 +18,7 @@
           </v-col>
 
           <v-col sm="3" md="2" lg="1" class="fill-height text-center">About</v-col>
-          <v-col sm="3" md="2" lg="1" class="fill-height text-center">Contact</v-col>
+          <v-col sm="3" md="2" lg="1" class="fill-height text-center contact">Contact</v-col>
         </v-row>
       </v-toolbar>
 
@@ -72,6 +72,11 @@ export default {
   justify-self: self-start;
   @media (max-width: 420px) {
     margin-left: -20px;
+  }
+}
+.contact{
+  @media (max-width: 420px) {
+    display: none;
   }
 }
 .container {
