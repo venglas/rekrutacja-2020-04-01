@@ -12,7 +12,7 @@
 
             <v-card-subtitle style="color: #000">
                 <p style="color: #000; font-size: .6rem">{{property.address}}</p>
-                <h2>${{price}}</h2>
+                <h2>${{propertyPrice}}</h2>
             </v-card-subtitle>
         </div>
     </div>
@@ -26,7 +26,7 @@
     name: 'Map-searcher-card',
     data() {
         return {
-            price: this.property.price
+            
         }
     },
     props: {
@@ -62,7 +62,7 @@
             
             const timer = setInterval(function() {
                 current += increment;
-                vm.price = current;
+                vm.property.price = current;
                 if (current == end) {
                     clearInterval(timer);
                 }
