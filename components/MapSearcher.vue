@@ -71,7 +71,7 @@
         </transition>
 
         <div class="properties-list-wrapper">
-            <div style="color: rgba(0, 0, 0, .5); font-size: 11px; margin: -1rem 0 0 1.5rem; z-index: 999; position: absolute">Showing {{properties.length}} properties</div>
+            <div class="property-list-counter">Showing {{properties.length}} properties</div>
             <v-col 
             class="py-0"
             v-for="(property, i) in properties"
@@ -310,6 +310,17 @@ import MapSearcherCard from "@/components/MapSearcherCard";
                 display: none;
             }
         }   
+    }
+}
+.property-list-counter {
+    color: rgba(0, 0, 0, .7);
+    font-size: 11px;
+    margin: -1rem 0 0 1.5rem;
+    z-index: 999;
+    position: absolute;
+
+    @media (max-width: 1080px) {
+        margin-top: -.5rem;
     }
 }
 .sorting-tool {
