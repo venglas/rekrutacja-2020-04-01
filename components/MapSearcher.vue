@@ -2,7 +2,7 @@
     <section class="map-searcher" ref="mapSearcher" v-if="$store.getters['map/getMapSearcherVisiblility']">
         <v-toolbar color="#5d4baf" class="toolbar">
             <v-row>
-                <v-col col="12" sm="1" align-self="center">
+                <v-col col="12" sm="1" style="max-width: fit-content" align-self="center">
                     <v-icon class="mr-2">mdi-home-search</v-icon>
                 </v-col>
                 
