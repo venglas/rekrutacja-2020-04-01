@@ -89,7 +89,7 @@ export default {
   @media (max-width: 420px) {
     margin: 0;
     width: 100vw;
-    height: calc(100vh - 64px);
+    height: 100vh;
   }
 }
 .col-dropdown {
