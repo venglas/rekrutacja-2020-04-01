@@ -70,6 +70,9 @@ export default {
 <style lang="scss" scoped>
 .logo {
   justify-self: self-start;
+  @media (max-width: 420px) {
+    margin-left: -20px;
+  }
 }
 .container {
   position: relative;
@@ -78,6 +81,11 @@ export default {
   padding: 0;
   width: 95vw;
   height: 90vh;
+  @media (max-width: 420px) {
+    margin: 0;
+    width: 100vw;
+    height: 100vh;
+  }
 }
 .col-dropdown {
   max-width: 10.666667%;
