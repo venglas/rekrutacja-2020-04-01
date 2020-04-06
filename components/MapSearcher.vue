@@ -318,21 +318,17 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     margin: -1rem 0 0 1.5rem;
     z-index: 999;
     position: absolute;
-
-    @media (max-width: 1080px) {
-        margin-top: -.5rem;
-    }
 }
 .sorting-tool {
     .collapse-button {
         display: none;
     }
-    
+
     @media (max-width: 1080px) {
         display: flex;
         flex-direction: column;
         align-items: center;
-        margin: .5rem 0 .7rem 0;
+        margin: .5rem 0 2rem 0;
 
         .collapse-button {
             display: block;
