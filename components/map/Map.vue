@@ -40,8 +40,8 @@ export default {
     var map = new mapboxgl.Map({
       container: 'map',
       style: mapStyle,
-      center: [-75.41279281493687, 39.99900483883425 -0.05],
-      zoom: 9.8
+      center: [-75.19279281493687, 39.99900483883425 -0.09],
+      zoom: 10.80
     });
     this.map = map;
     getCoordinates(this.map);
