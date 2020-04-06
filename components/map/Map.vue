@@ -62,7 +62,7 @@ export default {
           </div>
         `;
         
-        el.children[0].children[0].innerHTML = marker.properties.price;
+        el.children[0].children[0].innerHTML = `$${marker.properties.price}`;
         
         el.addEventListener('click', function(e) {});
         
