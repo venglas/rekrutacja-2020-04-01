@@ -1,5 +1,5 @@
 <template>
- <v-card light flat @click="goToProperty(property), animateValue(propertyPrice, 800, 400);">
+ <v-card light flat @click="goToProperty(property), animateValue(propertyPrice, 800, 400);" class="map-searcher-card">
     <div class="d-flex flex-no-wrap">
         <v-avatar class="ma-3" size="100" tile>
             <v-img :src="`/img/properties/property${property.img}.jpg`"></v-img>
@@ -11,7 +11,9 @@
             </v-card-title>
 
             <v-card-subtitle style="color: #000">
-                <p style="color: #000; font-size: .6rem">{{property.address}}</p>
+                <div class="property-info">{{property.address}}</div>
+                <div class="property-info"><b>rooms:</b> {{property.rooms}} <b>| baths:</b> {{property.baths}}</div>
+                <div class="property-info"><b>policies:</b> <span v-for="police in property.policies" :key="police">{{police}}, </span> </div>
                 <h2>${{propertyPrice}}</h2>
             </v-card-subtitle>
         </div>
@@ -71,3 +73,14 @@
     },
 }
 </script>
+
+<style lang="scss">
+.map-searcher-card{
+    align-items: center;
+    
+    .property-info {
+        color: #000;
+        font-size: .8rem;
+    }
+}
+</style>
