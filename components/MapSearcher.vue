@@ -234,7 +234,7 @@ import MapSearcherCard from "@/components/MapSearcherCard";
     filters: {},
     methods: {
         hideResults(){
-            this.$refs.mapSearcher.style.height = "64px";
+            this.$refs.mapSearcher.style.height = "54px";
         },
         showResults(){
             if (this.$store.getters['map/getResize'] < 960){
