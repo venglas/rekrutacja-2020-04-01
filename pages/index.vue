@@ -82,10 +82,9 @@ export default {
 .container {
   position: relative;
   overflow: hidden;
-  margin: 2rem auto;
   padding: 0;
-  width: 95vw;
-  height: 90vh;
+  width: 100vw;
+  height: 100vh;
   @media (max-width: 420px) {
     margin: 0;
     width: 100vw;
