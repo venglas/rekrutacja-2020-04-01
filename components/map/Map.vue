@@ -94,7 +94,12 @@ export default {
       
       
       var data = draw.getAll();
-      console.log(data);
+      console.group("Coords")
+        console.log(data.features[0].id);
+        for(const coord of data.features[0].geometry.coordinates[0]){
+          console.log(`[${coord[0]}, ${coord[1]}],`);  
+        }
+      console.groupEnd("Coords")
       var answer = document.getElementById('calculated-area');
 
       // if (data.features.length > 0) {
@@ -131,13 +136,6 @@ export default {
         .setLngLat(marker.geometry.coordinates)
         .addTo(map);
       });
-    },
-    drawPoligons(map){
-      
-  
-
-      
-      
     }
   }
 }
