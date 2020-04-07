@@ -10,6 +10,7 @@
 <script>
 import { mapState  } from 'vuex';
 import { mapStyle } from "@/components/utility/mapStyle.js";
+import * as MapboxDraw from "@mapbox/mapbox-gl-draw/dist/mapbox-gl-draw";
 import { getCoordinates } from "@/components/utility/helpers.js";
 import { geojson } from "@/components/map/markersCoordinates.js";
 
@@ -35,7 +36,6 @@ export default {
     }
   },
   mounted() {
-    
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
       container: 'map',
@@ -49,8 +49,39 @@ export default {
     map.addControl(new mapboxgl.NavigationControl()); // map controls +/-
     var mapboxClient = mapboxSdk({ accessToken: mapboxgl.accessToken });
     this.drawMarkers(map);
+
+    var draw = new MapboxDraw({
+    displayControlsDefault: false,
+      controls: {
+        polygon: true,
+        trash: true
+      }
+    });
+    map.addControl(draw);
+
+    // map.on('draw.create', this.updateArea(e));
+    // map.on('draw.delete', this.updateArea(e));
+    // map.on('draw.update', this.updateArea(e));
   },
   methods: {
+    updateArea(e) {
+      var data = draw.getAll();
+      var answer = document.getElementById('calculated-area');
+
+      if (data.features.length > 0) {
+        var area = turf.area(data);
+        // restrict to area to 2 decimal points
+        var rounded_area = Math.round(area * 100) / 100;
+        answer.innerHTML =
+          '<p><strong>' +
+          rounded_area +
+          '</strong></p><p>square meters</p>';
+      } else {
+        answer.innerHTML = '';
+        if (e.type !== 'draw.delete')
+        alert('Use the draw tools to draw a polygon!');
+      }
+    },
     drawMarkers(map) {
       geojson().features.forEach(function(marker) {
         var el = document.createElement('div');

@@ -78,7 +78,11 @@ module.exports = {
     /*
     ** You can extend webpack config here
     */
+    node: {
+      fs: "empty"
+    },
     extend (config, ctx) {
+      
     }
   }
 }
