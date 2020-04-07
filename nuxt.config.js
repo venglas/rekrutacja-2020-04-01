@@ -15,7 +15,8 @@ module.exports = {
     ],
     link: [
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' },
-      { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' }
+      { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css' },
+      { rel: 'stylesheet', href: 'https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-draw/v1.0.9/mapbox-gl-draw.css' }
     ],
     script: [
       { src: 'https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js' },

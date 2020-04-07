@@ -19,10 +19,42 @@ const createFeatures = () => {
     return features;
 };
 
+const createFeaturesPolygons = () => {
+    const features = [];
+
+    for (const marker of state().polygons) {
+        features.push({
+            'type': 'Feature',
+            'properties': {
+                'price': marker.price
+            },
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': marker.coordinates
+            }
+        });
+    };
+
+    return features;
+};
+
+// var geojson = () => {
+//     return {
+//         'type': 'FeatureCollection',
+//         'features': createFeatures()     
+//     };
+// }
+
 var geojson = () => {
     return {
-        'type': 'FeatureCollection',
-        'features': createFeatures()     
+        'type': 'geojson',
+        'data': {
+            'type': 'Feature',
+            'geometry': {
+                'type': 'Polygon',
+                'coordinates': createFeaturesPolygons()
+            }
+        }
     };
 }
 

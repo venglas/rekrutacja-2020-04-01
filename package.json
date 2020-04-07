@@ -19,7 +19,8 @@
     "express": "^4.16.4",
     "fs": "^0.0.1-security",
     "jsonlint": "^1.6.3",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "turf": "^3.0.14"
   },
   "devDependencies": {
     "@mdi/js": "^5.0.45",

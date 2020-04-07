@@ -2,10 +2,6 @@
   <v-container fluid tag="article">
     <v-card style="height: inherit">
       <v-toolbar light id="map-toolbar">
-        <v-col sm="1" class="logo">
-          <img src="../assets/img/logo.png">
-        </v-col>
-
         <v-row justify="end" align="center">
           <v-col sm="3" md="2" lg="2" align="center" class="fill-height py-0 col-dropdown">
             <v-select
@@ -37,7 +33,7 @@ export default {
   data(){
     return {
       service: {
-        services: ['Search list', 'service 2', 'service 3'],
+        services: ['service 1', 'service 2', 'service 3'],
         selectedService: null
       }
     }
@@ -68,16 +64,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.logo {
-  justify-self: self-start;
-  @media (max-width: 420px) {
-    margin-left: -20px;
-  }
-}
 .contact{
-  @media (max-width: 420px) {
-    display: none;
-  }
 }
 .container {
   position: relative;
@@ -85,23 +72,8 @@ export default {
   padding: 0;
   width: 100vw;
   height: 100vh;
-  @media (max-width: 420px) {
-    margin: 0;
-    width: 100vw;
-    height: 100vh;
-  }
 }
 .col-dropdown {
-  max-width: 10.666667%;
-  @media(max-width: 1440px) {
-   max-width: 12.666667%; 
-  }
-  @media(max-width: 1440px) {
-   max-width: 15.666667%; 
-  }
-  @media(max-width: 1024px) {
-   max-width: 100%; 
-  }
 }
 .dropdown {
   height: -webkit-fill-available;
