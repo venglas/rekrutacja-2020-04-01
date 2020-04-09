@@ -12,6 +12,10 @@
             <v-app-bar-nav-icon></v-app-bar-nav-icon>
             <v-toolbar-title>Whats news? Here is right place for you ;)</v-toolbar-title>
 
+            <!--TODO: if admin -->
+            <v-btn class="mx-3" @click="addRelease()">
+                add release
+            </v-btn>
         </v-app-bar>
 
         <v-container 
@@ -86,6 +90,12 @@ export default {
     
   },
   methods: {
+    async addRelease() {
+        const res = await this.$axios.$post('http://localhost:8080/api/changelog/add', {
+            changeVersion: "0.0.2",
+	        releaseDate: "20-20-202"
+        });
+    }
   }
 }
 </script>
