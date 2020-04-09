@@ -61,16 +61,19 @@ export default {
             {
                 version: "0.0.1",
                 description: "Initialize project",
-                date: "20-02-2020",
+                date: "20-02-2020 for edit",
                 changeList: [
                     {
-                        title: "test - reuse other application for start",
-                        description: "Reuse an simple map project for faster start work on application. stack java 8, spring, hibermate, nuxt, vuetify"
+                        title: "Create application java spring boot, nuxt, vuetify",
+                        description: "Generate project, install dependencies create frontend base, and base config for mapboc gl js"
                     },
-
                     {
-                        title: "test - refactor code. clean not needed things.",
-                        description: "Remove things which will not be using cuz haven't goal in this type of project."
+                        title: "Add this change log / whats new page",
+                        description: "Just for you :)"
+                    },
+                    {
+                        title: "Add base for adding polygons",
+                        description: "Configure selecting and saving poligons on map"
                     }
                 ]
             }
