@@ -13,9 +13,7 @@
             <v-toolbar-title>Whats news? Here is right place for you ;)</v-toolbar-title>
 
             <!--TODO: if admin -->
-            <v-btn class="mx-3" @click="addRelease()">
-                add release
-            </v-btn>
+            <Add-change-log-modal />
         </v-app-bar>
 
         <v-container 
@@ -26,9 +24,6 @@
                 <v-expansion-panels
                     accordion="accordion"
                     light
-                    :focusable="focusable"
-                    :hover="hover"
-                    :title="title"
                 >
                     <v-expansion-panel light v-for="(change, i) in changeLogs" :key="i">
                         <v-expansion-panel-header light> 
@@ -53,10 +48,12 @@
 
 <script>
 import ChangeLogLink from "@/components/change-log/ChangeLogLink";
+import AddChangeLogModal from "@/components/change-log/AddChangeLogModal";
 
 export default {
   components: {
-    'Change-log-ink': ChangeLogLink
+    'Change-log-ink': ChangeLogLink,
+    'Add-change-log-modal': AddChangeLogModal
   },
   data(){
     return {
@@ -90,12 +87,7 @@ export default {
     
   },
   methods: {
-    async addRelease() {
-        const res = await this.$axios.$post('http://localhost:8080/api/changelog/add', {
-            changeVersion: "0.0.2",
-	        releaseDate: "20-20-202"
-        });
-    }
+    
   }
 }
 </script>
