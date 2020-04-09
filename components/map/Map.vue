@@ -52,11 +52,11 @@ export default {
       this.map.resize();
     }
   },
-  mounted() {
+  async mounted() {
     mapboxgl.accessToken = 'pk.eyJ1IjoiYmFydDEyMzQxMiIsImEiOiJjazhobm9lMmowMjczM25tY2g5cngydHR6In0.xuM_M3yP-pxSVB9Ls2ZcOw';
     var map = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/satellite-streets-v11',
+      style: "mapbox://styles/mapbox/satellite-streets-v11",
       center: [-75.19279281493687, 39.99900483883425 -0.09],
       zoom: 10.80
     });
@@ -64,9 +64,9 @@ export default {
     
     var draw = new MapboxDraw({
       displayControlsDefault: true,
-        controls: {
-          polygon: true,
-          trash: true
+      controls: {
+        polygon: true,
+        trash: true
       }
     });
 
@@ -83,11 +83,7 @@ export default {
     map.on('draw.create', () => {this.updateArea(draw)});
     map.on('draw.delete', () => {this.updateArea(draw)});
     map.on('draw.update', () => {this.updateArea(draw)});
-
-    setTimeout(() => {
-      drawPoligons(map, "test")  
-    }, 1000);
-    
+    await drawPoligons(map)
   },
   methods: {
     updateArea(draw) {
