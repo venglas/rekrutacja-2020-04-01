@@ -25,19 +25,21 @@
                     accordion="accordion"
                     light
                 >
-                    <v-expansion-panel light v-for="(change, i) in changeLogs" :key="i">
+                    <v-expansion-panel light v-for="(release, i) in releases" :key="release.changeId">
                         <v-expansion-panel-header light> 
                             <span>
-                                <b class="px-1">[{{change.version}}]</b> {{change.description}}
-                                <span class="font-weight-light overline px-1">({{change.date}})</span>
+                                <b class="px-1">[{{release.changeVersion}}]</b> {{release.changeTitle}}
+                                <span class="font-weight-light overline px-1">({{release.releaseDate}})</span>
                             </span>
                         </v-expansion-panel-header>
 
                         <v-expansion-panel-content light>
-                            <div class="change-list-item" light v-for="(changeList, i) in change.changeList" :key="changeList.title">
+                            <Add-change-item-modal :version="release.changeVersion"/>
+
+                            <!-- <div class="change-list-item" light v-for="(changeList, i) in change.changeList" :key="changeList.title">
                                 <header class="change-list-item__header"><b class="px-1">{{i}})</b> {{changeList.title}}</header>
                                 <p class="change-list-item__description">{{changeList.description}}</p>
-                            </div>
+                            </div> -->
                         </v-expansion-panel-content>
                     </v-expansion-panel>
                 </v-expansion-panels>
@@ -47,47 +49,45 @@
 </template>
 
 <script>
+import {get, post} from "@/components/utility/axios/request.js";
+
 import ChangeLogLink from "@/components/change-log/ChangeLogLink";
 import AddChangeLogModal from "@/components/change-log/AddChangeLogModal";
+import AddChangeItemModal from "@/components/change-log/AddChangeItemModal";
 
 export default {
   components: {
     'Change-log-ink': ChangeLogLink,
-    'Add-change-log-modal': AddChangeLogModal
+    'Add-change-log-modal': AddChangeLogModal,
+    'Add-change-item-modal': AddChangeItemModal
   },
   data(){
     return {
         collapseOnScroll: true,
-        changeLogs: [
-            {
-                version: "0.0.1",
-                description: "Initialize project",
-                date: "20-02-2020 for edit",
-                changeList: [
-                    {
-                        title: "Create application java spring boot, nuxt, vuetify",
-                        description: "Generate project, install dependencies create frontend base, and base config for mapboc gl js"
-                    },
-                    {
-                        title: "Add this change log / whats new page",
-                        description: "Just for you :)"
-                    },
-                    {
-                        title: "Add base for adding polygons",
-                        description: "Configure selecting and saving poligons on map"
-                    }
-                ]
-            }
-        ]
+        releases: null
     }
   },
   mounted(){
+    get('/changeLog/all', (res) => {
+        console.log(res.data);
+        
+        this.releases = res.data;
+    });
   },
   watch: {
     
   },
   methods: {
-    
+    addReleaseFeature(version) {
+        post('/changeItem/add', {
+            changeVersion: version,
+            changeTitle: "test title",
+            description: "test description"
+        },
+        res => {},
+        err => {console.log(err)}
+        );
+    }
   }
 }
 </script>
