@@ -1,7 +1,7 @@
 <template>
  <v-dialog v-model="dialog" persistent max-width="600px">
     <template v-slot:activator="{ on }">
-        <v-btn class="mx-3" v-on="on">Add release</v-btn>
+        <v-btn class="mx-3" v-on="on">Add feature</v-btn>
     </template>
 
     <v-card>
